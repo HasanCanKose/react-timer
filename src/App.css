@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #dddddd;
+}
+
+.App {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.first-title {
+  margin-top: 50px;
+}
+.second-title {
+  margin-bottom: 20px;
+}
+.title {
+  color: #000519;
+}
+
+.button:focus {
+  outline: none;
+}
+.stopwatch {
+  margin-top: 10px;
+  min-height: 100vh;
+  margin-bottom: 50px;
+}
+
+.stopwatch-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 50px;
+}
+
+.time-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 2fr 0.5fr 2fr 0.5fr 1.5fr;
+  font-weight: bold;
+  padding: 30px 0px;
+}
+
+.minute {
+  font-size: 150px;
+  width: 200px;
+}
+.colon {
+  font-size: 50px;
+  font-weight: 100;
+}
+.second {
+  font-size: 150px;
+}
+.split-second {
+  font-size: 70px;
+}
+
+.stopwatch-button {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  margin: 16px 24px;
+}
+.start-stop-button {
+  width: 100%;
+  background-color: #474d59;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.reset-button {
+  width: 100%;
+  background-color: #474d59;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.lap-button {
+  width: 100%;
+  background-color: #474d59;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.list {
+  margin: 0 80px;
+  text-align: center;
+}
+
+.list-title {
+  margin-bottom: 25px;
+}
+
+.list-ul {
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 5px;
+  text-align: left;
+}
+.list-li {
+  margin-bottom: 8px;
+  font-size: 25px;
+  font-weight: 620;
+}
+
+.list-button {
+  width: 100%;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 4px;
+}
+
+.list-button-wrapper {
+  cursor: not-allowed;
+  margin-top: 30px;
+}
+
+.timer {
+  /* margin-top: 220px;
+  margin-bottom: 100px; */
+  height: 100vh;
+}
+.timer-time-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 2fr 0.5fr 2fr 0.5fr 2fr;
+  font-weight: bold;
+  padding: 30px 0px;
+}
+.timer-info {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 2fr 2fr 2fr;
+  font-weight: bold;
+  padding: 30px 0px;
+}
+
+.timer-input {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 2fr 2fr 2fr;
+  margin-bottom: 30px;
+}
+.timer-button {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  margin: 16px 24px;
+}
+input[type="text"] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.timer-hour {
+  font-size: 150px;
+  width: 200px;
+}
+.timer-minute {
+  font-size: 150px;
+}
+.timer-second {
+  font-size: 150px;
+}
+
+@media (max-width: 550px) {
+  .minute {
+    font-size: 120px;
+    width: 180px;
+    border-radius: 50%;
+  }
+  .colon {
+    font-size: 45px;
+    font-weight: 100;
+  }
+  .second {
+    font-size: 120px;
+    border-radius: 50%;
+  }
+  .split-second {
+    font-size: 60px;
+    border-radius: 50%;
+  }
+  .timer-hour {
+    font-size: 120px;
+    width: 180px;
+  }
+  .timer-minute {
+    font-size: 120px;
+  }
+  .timer-second {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 450px) {
+  .minute {
+    font-size: 100px;
+    width: 120px;
+    border-radius: 50%;
+  }
+  .colon {
+    font-size: 45px;
+    font-weight: 100;
+  }
+  .second {
+    font-size: 100px;
+    border-radius: 50%;
+  }
+  .split-second {
+    font-size: 40px;
+    border-radius: 50%;
+  }
+  .timer-hour {
+    font-size: 100px;
+    width: 120px;
+  }
+  .timer-minute {
+    font-size: 100px;
+  }
+  .timer-second {
+    font-size: 100px;
+  }
+}
+
+@media (max-width: 350px) {
+  .minute {
+    font-size: 80px;
+    width: 100px;
+    border-radius: 50%;
+  }
+  .colon {
+    font-size: 30px;
+    font-weight: 100;
+  }
+  .second {
+    font-size: 80px;
+    border-radius: 50%;
+  }
+  .split-second {
+    font-size: 40px;
+    border-radius: 50%;
+  }
+  .timer-hour {
+    font-size: 80px;
+    width: 100px;
+  }
+  .timer-minute {
+    font-size: 80px;
+  }
+  .timer-second {
+    font-size: 80px;
+  }
+}
