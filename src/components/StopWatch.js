@@ -8,11 +8,13 @@ function StopWatch() {
   const [timer, setTimer] = useState(false);
   const [times, setTimes] = useState([]);
   const [isListEmpty, setIsListEmpty] = useState(true);
+  const [title, setTitle] = useState(false);
 
   const intervalRef = useRef();
 
   const startTimer = () => {
     intervalRef.current = setInterval(() => {
+      setTitle(true);
       setTimer(true);
       setSplitSecond((prevSecond) => prevSecond + 1);
     }, 16.6);
@@ -28,6 +30,7 @@ function StopWatch() {
     setSecond(0);
     setMinute(0);
     stopTimer();
+    setTitle(false);
   };
 
   const addTime = (e) => {
@@ -59,7 +62,12 @@ function StopWatch() {
       setSecond(0);
       setSplitSecond(0);
     }
-  }, [splitSecond, second]);
+    if (title) {
+      document.title = `${minute} : ${second} : ${splitSecond}`;
+    } else {
+      document.title = "Timer App";
+    }
+  }, [splitSecond, second, minute, title]);
   return (
     <div className="stopwatch-container">
       <div>

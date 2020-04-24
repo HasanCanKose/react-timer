@@ -5,6 +5,7 @@ function Timer() {
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
   const [timer, setTimer] = useState(false);
+  const [title, setTitle] = useState(false);
 
   const handleChangeHour = (e) => {
     if (e.target.value > 99) {
@@ -38,6 +39,7 @@ function Timer() {
 
   const startCountDown = () => {
     intervalRef.current = setInterval(() => {
+      setTitle(true);
       setTimer(true);
       setSecond((prevSecond) => prevSecond - 1);
     }, 1000);
@@ -49,6 +51,7 @@ function Timer() {
   }, [intervalRef]);
 
   const resetCountDown = useCallback(() => {
+    setTitle(false);
     setHour(0);
     setMinute(0);
     setSecond(0);
@@ -76,10 +79,14 @@ function Timer() {
     }
     if (hour === 0 && minute === 0 && second < 0) {
       alarm();
-
       resetCountDown();
     }
-  }, [second, minute, hour, resetCountDown]);
+    if (title) {
+      document.title = `${hour} : ${minute} : ${second}`;
+    } else {
+      document.title = "Timer App";
+    }
+  }, [second, minute, hour, resetCountDown, title]);
   return (
     <div>
       <div className="timer-time-container">
