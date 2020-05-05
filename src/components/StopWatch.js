@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import TimeList from "./TimeList";
 
 function StopWatch() {
+  const [hour, setHour] = useState(0);
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
-  const [splitSecond, setSplitSecond] = useState(0);
   const [timer, setTimer] = useState(false);
   const [times, setTimes] = useState([]);
   const [isListEmpty, setIsListEmpty] = useState(true);
@@ -13,11 +13,11 @@ function StopWatch() {
   const intervalRef = useRef();
 
   const startTimer = () => {
+    setTitle(true);
+    setTimer(true);
     intervalRef.current = setInterval(() => {
-      setTitle(true);
-      setTimer(true);
-      setSplitSecond((prevSecond) => prevSecond + 1);
-    }, 16.6);
+      setSecond((prevSecond) => prevSecond + 1);
+    }, 1000);
   };
 
   const stopTimer = () => {
@@ -26,9 +26,9 @@ function StopWatch() {
   };
 
   const resetTimer = () => {
-    setSplitSecond(0);
     setSecond(0);
     setMinute(0);
+    setHour(0);
     stopTimer();
     setTitle(false);
   };
@@ -36,10 +36,10 @@ function StopWatch() {
   const addTime = (e) => {
     e.preventDefault();
 
-    const newTime = [minute, " : ", second, " : ", splitSecond];
+    const newTime = [hour, " : ", minute, " : ", second];
 
     const updatedTimes = [...times, newTime];
-    if (splitSecond === 0 && second === 0 && minute === 0) {
+    if (second === 0 && minute === 0 && hour === 0) {
       alert("Start the stopwatch first!");
     } else {
       setTimes(updatedTimes);
@@ -53,30 +53,31 @@ function StopWatch() {
   };
 
   useEffect(() => {
-    if (splitSecond === 60) {
-      setSecond((prevMinute) => prevMinute + 1);
-      setSplitSecond(0);
-    }
     if (second === 60) {
       setMinute((prevHour) => prevHour + 1);
       setSecond(0);
-      setSplitSecond(0);
+    }
+    if (minute === 60) {
+      setHour((prevHour) => prevHour + 1);
+      setMinute(0);
+      setSecond(0);
     }
     if (title) {
-      document.title = `${minute} : ${second} : ${splitSecond}`;
+      document.title = `${hour} : ${minute} : ${second}`;
     } else {
       document.title = "Timer App";
     }
-  }, [splitSecond, second, minute, title]);
+  }, [second, minute, hour, title]);
+
   return (
     <div className="stopwatch-container">
       <div>
         <div className="time-container">
+          <div className="hour">{hour}</div>
+          <div className="colon">:</div>
           <div className="minute">{minute}</div>
           <div className="colon">:</div>
           <div className="second">{second}</div>
-          <div className="colon">:</div>
-          <div className="split-second">{splitSecond}</div>
         </div>
         <div className="stopwatch-button button">
           <button
